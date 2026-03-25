@@ -5,7 +5,7 @@
 
 using namespace std;
 
-class DocumentEditor{
+/*class DocumentEditor{
     private:
     vector<string> documentElements;
     string renderedDocument;
@@ -53,7 +53,23 @@ class DocumentEditor{
 
     }
 };
+*/
 
+class DocumentElement{
+    public:
+    virtual string render()=0;
+};
+class TextElement:public DocumentElement{
+    private:
+    string text;
+    public:
+    TextElement(string text){
+        this->text=text;
+    }
+    string render() override{
+        return text;
+    }
+};
 int main(){
     DocumentEditor editor;
     editor.addText("Hello World");
