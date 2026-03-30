@@ -1,0 +1,55 @@
+#ifndef RESTAURANT_H
+#define RESTAURANT_H
+#include <iostream>
+#include <string>
+#include <vector>
+#include "<MenuItems.h>"
+using namespace  std;
+
+class Restaurant{
+    private:
+    static int nextRestrauntId;
+    int restaurantId;
+    string name;
+    string location;
+    vector<MenuItem> menu;
+
+    public:
+    Restaurant(const string& name,const string& location){
+        this->name=name;
+        this->location=location;
+        this->restaurantId=++nextRestaurantId;
+    }
+    ~Restaurant(){
+        cout<<"Destroying restaurant:"<<name<<",and clearing menu"<<endl;
+        menu.clear();
+    }
+    string getname() const{
+        return name;
+    }
+
+    void setName(const string& n)
+    {
+        name=n;
+    }
+    string getLocation() const{
+        return location;
+    }
+
+    void setLocation(const string &loc)
+    {
+        location=loc;
+    }
+
+    void addMenuItem(const MenuItem &item)
+    {
+        menu.push_back(item);
+    }
+
+    const vector<MenuItem>& getMenu() const{
+        return menu;
+    }
+
+};
+int Restaurant::nextRestrauntId=0;
+#endif
